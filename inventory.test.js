@@ -9,9 +9,32 @@ test('REQ-01 restock adds quantity to existing sku', () => {
 test('REQ-02 restock adds quantity to existing sku', () => {
   const stock = { 'A-1': 5 };
   restock(stock, [{sku: 'A-1', qty: 3}])
-  expect(stock["A-1"].toBe(5))
+  expect(stock["A-1"]).toBe(5)
 });
 
+test('REQ-03 qty test 1', () => {
+  const stock = { 'A-1': 5 };
+  restock(stock, [{sku: 'A-1', qty: 1}])
+  expect(stock["A-1"]).toBe(5)
+});
+
+test('REQ-03 qty test 0', () => {
+  const stock = { 'A-1': 5 };
+  restock(stock, [{sku: 'A-1', qty: 0}])
+  expect(stock["A-1"]).toThrow('qty must be a positive whole number')
+});
+
+test('REQ-03 qty test -1', () => {
+  const stock = { 'A-1': 5 };
+  restock(stock, [{sku: 'A-1', qty: -1}])
+  expect(stock["A-1"]).toThrow('qty must be a positive whole number')
+});
+
+test('REQ-03 qty test 2.5', () => {
+  const stock = { 'A-1': 5 };
+  restock(stock, [{sku: 'A-1', qty: 2.5}])
+  expect(stock["A-1"]).toThrow('qty must be a positive whole number')
+});
 
 // ---- Performance test (etapp 1b) ----
 // TODO: generate 20 000 items with some duplicates, measure findDuplicateSkus,
