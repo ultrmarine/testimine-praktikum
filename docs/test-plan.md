@@ -37,5 +37,5 @@ Tool: Jest in GitHub Codespaces.
 Codespaces
 
 ## 7. Roles
-<Martin>: tests. <Miron>: documents. Reviewer: team <A>.
+Martin: tests. Miron: documents. Reviewer: team A.
 
