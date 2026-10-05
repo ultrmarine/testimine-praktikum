@@ -41,7 +41,16 @@ test('REQ-04 pick returns a new object, original unchanged', () => {
   pick(stock, 'A-1', 2);
   expect(stock['A-1']).toBe(5);
 });
-;
+
+test('REQ-05 findDuplicateSkus handles 20 000 items under 100 ms', () => {
+  const items = [];
+  for (let i = 0; i < 20000; i++) items.push({ sku: 'SKU-' + (i % 19000) });
+  const t0 = performance.now();
+  findDuplicateSkus(items);
+  const ms = performance.now() - t0;
+  expect(ms).toBeLessThan(100);
+});
+
 
 // ---- Performance test (etapp 1b) ----
 // TODO: generate 20 000 items with some duplicates, measure findDuplicateSkus,
