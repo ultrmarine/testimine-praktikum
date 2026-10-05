@@ -7,6 +7,7 @@ loeng-34,47/inventory.js, commit <ab4dfe5b51a31a8cb3dc178cb95dc4fe4e5de9e3>
 In scope: REQ-02 ,REQ-03 ,REQ-04 ,REQ-05 ,REQ-06 ,REQ-07 ,REQ-08 ,REQ-09 
 
 ## 3. Risks
+| Risk | Probability (L/M/H) | Impact (L/M/H) | Mitigation (which tests) |
 |---|---|---|---|
 | Risk | Probability (M) | Impact (M) | 
 | Risk | Probability (L) | Impact (H) |
