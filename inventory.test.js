@@ -36,6 +36,13 @@ test('REQ-03 qty test 2.5', () => {
   expect(stock["A-1"]).toThrow('qty must be a positive whole number')
 });
 
+test('REQ-04 pick returns a new object, original unchanged', () => {
+  const stock = { 'A-1': 5 };
+  pick(stock, 'A-1', 2);
+  expect(stock['A-1']).toBe(5);
+});
+;
+
 // ---- Performance test (etapp 1b) ----
 // TODO: generate 20 000 items with some duplicates, measure findDuplicateSkus,
 // assert it finishes under 100 ms. See project guide chapter 3.2.
