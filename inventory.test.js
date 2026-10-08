@@ -66,8 +66,15 @@ test('REQ-09 failed restock leaves original stock unchanged', () => {
   expect(stock['A-1']).toBe(5);
 });
 
+test('REQ-10 Line 45 check', () => {
+  const stock = { 'A-1': 5 };
+  expect(() => pick(stock, 'AAAAA951', 1)).toThrow('unknown sku');
+});
 
-
+test('REQ-11 Line 48 check', () => {
+  const stock = { 'A-1': "Hello" };
+  expect(() => pick(stock, 'A-1', "Hello")).toThrow('not enough stock');
+});
 
 // ---- Performance test (etapp 1b) ----
 // TODO: generate 20 000 items with some duplicates, measure findDuplicateSkus,
