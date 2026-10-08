@@ -9,4 +9,4 @@
 | TC-05 | REQ-05| functional | High | stock = { 'A-1': 5 } | restock, then read stock | stock['A-1'] still -1 | REQ-05 qty test -1|
 | TC-06 | REQ-06| functional | High | stock = { 'A-1': 5 } | restock, then read stock | stock['A-1'] still 2.5 | REQ-06 qty test 2.5|
 | TC-08 | REQ-08 | performance | High | 20 000 items, 1 000 duplicates | findDuplicateSkus | < 100 ms | REQ-08 findDuplicateSkus handles 20 000 items under 100 ms |
-| TC-09 | REQ-09 | performance | High | stock = { 'A-1': 5 } | stock, [{ sku: 'A-1', qty: 1 }, { sku: 'B-2', qty: 0 }]) | REQ-09 failed restock leaves original stock unchanged |
+| TC-09 | REQ-09 | performance | High | stock = { 'A-1': 5 } | restock, then read stock | stock, [{ sku: 'A-1', qty: 1 }, { sku: 'B-2', qty: 0 }]) | REQ-09 failed restock leaves original stock unchanged |
