@@ -17,7 +17,7 @@ In scope: REQ-02 ,REQ-03 ,REQ-04 ,REQ-05 ,REQ-06 ,REQ-07 ,REQ-08 ,REQ-09
 | Ei tagasta uut objekti | Probability (H) | Impact (M) | REQ-7 |
 | Liiga palju viivitust | Probability (H) | Impact (M) | REQ-8 |
 | Kauba vale täiendamine | Probability (L) | Impact (H) | REQ-9 |
-|---|---|---|---|
+
 
 ## 4. Approach
 Test types: functional,security,regression
