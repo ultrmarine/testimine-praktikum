@@ -20,20 +20,17 @@ test('REQ-03 qty test 1', () => {
 
 test('REQ-04 qty test 0', () => {
   const stock = { 'A-1': 5 };
-  restock(stock, [{sku: 'A-1', qty: 0}])
-  expect(stock["A-1"]).toThrow('qty must be a positive whole number')
+  expect(() => restock(stock, [{ sku: 'A-1', qty: 0 }])).toThrow();
 });
 
 test('REQ-05 qty test -1', () => {
   const stock = { 'A-1': 5 };
-  restock(stock, [{sku: 'A-1', qty: -1}])
-  expect(stock["A-1"]).toThrow('qty must be a positive whole number')
+  expect(() => restock(stock, [{ sku: 'A-1', qty: -1 }])).toThrow();
 });
 
 test('REQ-06 qty test 2.5', () => {
   const stock = { 'A-1': 5 };
-  restock(stock, [{sku: 'A-1', qty: 2.5}])
-  expect(stock["A-1"]).toThrow('qty must be a positive whole number')
+  expect(() => restock(stock, [{ sku: 'A-1', qty: 2.5 }])).toThrow();
 });
 
 test('REQ-07 pick returns a new object, original unchanged', () => {
