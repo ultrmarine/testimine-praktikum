@@ -53,14 +53,15 @@ function pick(stock, sku, qty) {
 }
 
 function findDuplicateSkus(items) {
-  const seen = new Set();
-  const duplicates = new Set();
-  for (const item of items) {
-    if (seen.has(item.sku)) duplicates.add(item.sku);
-    seen.add(item.sku);
+  const duplicates = [];
+  for (let i = 0; i < items.length; i++) {
+    for (let j = i + 1; j < items.length; j++) {
+      if (items[i].sku === items[j].sku && !duplicates.includes(items[i].sku)) {
+        duplicates.push(items[i].sku);
+      }
+    }
   }
-  return [...duplicates];
+  return duplicates;
 }
-
 
 module.exports = { restock, pick, findDuplicateSkus };
