@@ -19,7 +19,7 @@ const FREE_MINUTES = 15;
 
 function parkingFee(minutes, zone, options = {}) {
   if (typeof minutes !== 'number' || Number.isNaN(minutes) || minutes < 0) {
-    throw new TypeError('minutes must be a number >= 0');
+    throw new TypeError('minutes must be a non-negative number');
   }
   if (!RATE[zone]) {
     throw new TypeError('unknown zone');
@@ -27,14 +27,19 @@ function parkingFee(minutes, zone, options = {}) {
   if (minutes <= FREE_MINUTES) {
     return 0;
   }
-  const hours = Math.ceil((minutes - FREE_MINUTES) / 60);   
+
+  // Fix B-01: every started hour of the WHOLE stay is charged
+  const hours = Math.ceil(minutes / 60);
   let fee = hours * RATE[zone];
-  if (options.resident) {                                   
-    fee = fee * 0.5;
-  }
+
+  // Fix B-02: apply daily maximum BEFORE resident discount
   if (fee > DAILY_MAX[zone]) {
     fee = DAILY_MAX[zone];
   }
+  if (options.resident === true) {
+    fee = fee * 0.5;
+  }
+
   return Math.round(fee * 100) / 100;
 }
 
